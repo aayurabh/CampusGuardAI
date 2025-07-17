@@ -257,9 +257,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Documentation**: [Wiki](https://github.com/yourusername/campusguard/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/campusguard/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/campusguard/discussions)
+- **Documentation**: [Wiki](https://github.com/aayurabh/campusguard/wiki)
+- **Issues**: [GitHub Issues](https://github.com/aayurabh/campusguard/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/aayurabh/campusguard/discussions)
 
 ## 🔮 Roadmap
 
