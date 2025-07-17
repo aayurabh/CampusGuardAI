@@ -259,7 +259,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Documentation**: [Wiki](https://github.com/aayurabh/CampusGuardAI/wiki)
 - **Issues**: [GitHub Issues](https://github.com/aayurabh/CampusGuardAI/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/aayurabh/CampusGuardAI/discussions)
+
 
 ## 🔮 Roadmap
 
