@@ -4,7 +4,7 @@ import { MonitoringModule } from '../App';
 
 interface AnalyticsPanelProps {
   moduleId: MonitoringModule;
-  realTimeData?: any;
+  realTimeData?: unknown;
 }
 
 const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ moduleId, realTimeData }) => {
@@ -121,22 +121,22 @@ const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ moduleId, realTimeData 
   const analytics = realTimeMetrics || getModuleAnalytics();
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-colors">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">{analytics.title}</h3>
-        <BarChart3 className="w-5 h-5 text-gray-400" />
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{analytics.title}</h3>
+        <BarChart3 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
       </div>
 
       <div className="space-y-4">
         {analytics.metrics.map((metric, index) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors">
             <div>
-              <p className="text-sm font-medium text-gray-900">{metric.label}</p>
-              <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{metric.label}</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{metric.value}</p>
             </div>
             <div className="flex items-center space-x-2">
               <span className={`text-sm ${
-                metric.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                metric.trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
               }`}>
                 {metric.change}
               </span>
@@ -151,8 +151,8 @@ const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ moduleId, realTimeData 
       </div>
 
       {/* Mini Chart Placeholder */}
-      <div className="mt-6 h-20 bg-gray-50 rounded-lg flex items-center justify-center">
-        <div className="flex items-center space-x-2 text-gray-500">
+      <div className="mt-6 h-20 bg-gray-50 dark:bg-gray-700 rounded-lg flex items-center justify-center transition-colors">
+        <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
           <Activity className="w-4 h-4" />
           <span className="text-sm">Real-time analytics chart</span>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Camera, Shield, Users, AlertTriangle, Eye, Flame, Settings, Activity, BarChart3, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { Camera, Shield, Users, Eye, Settings, Activity, BarChart3, Flame, Moon, Sun } from 'lucide-react';
+import { useTheme } from './contexts/ThemeContext';
 import Dashboard from './components/Dashboard';
 import ModuleSelector from './components/ModuleSelector';
 import CameraFeed from './components/CameraFeed';
@@ -19,7 +20,8 @@ function App() {
   const [activeModule, setActiveModule] = useState<MonitoringModule>('overview');
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [realTimeAnalysis, setRealTimeAnalysis] = useState<any>(null);
+  const [realTimeAnalysis, setRealTimeAnalysis] = useState<unknown>(null);
+  const { isDark, toggleTheme } = useTheme();
 
   const modules = [
     {
@@ -69,9 +71,9 @@ function App() {
   const currentModule = modules.find(m => m.id === activeModule);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
@@ -79,22 +81,31 @@ function App() {
                 <Camera className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">CampusGuard</h1>
-                <p className="text-sm text-gray-500">AI-Powered Campus Monitoring</p>
+                <h1 className="text-xl font-bold text-gray-900 dark:text-white">CampusGuard</h1>
+                <p className="text-sm text-gray-500 dark:text-gray-400">AI-Powered Campus Monitoring</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <div className={`w-2 h-2 rounded-full ${isMonitoring ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-gray-600 dark:text-gray-300">
                   {isMonitoring ? 'Monitoring Active' : 'Monitoring Inactive'}
                 </span>
               </div>
-              
+
+              <button
+                onClick={toggleTheme}
+                className="flex items-center space-x-2 px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                <span>{isDark ? 'Light' : 'Dark'}</span>
+              </button>
+
               <button
                 onClick={() => setShowSettings(!showSettings)}
-                className="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                className="flex items-center space-x-2 px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 <Settings className="w-4 h-4" />
                 <span>Settings</span>
@@ -122,15 +133,15 @@ function App() {
             ) : (
               <div className="space-y-6">
                 {/* Module Header */}
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-colors">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${currentModule?.color}`}>
                         {currentModule?.icon && <currentModule.icon className="w-5 h-5 text-white" />}
                       </div>
                       <div>
-                        <h2 className="text-xl font-semibold text-gray-900">{currentModule?.title}</h2>
-                        <p className="text-gray-600">{currentModule?.description}</p>
+                        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{currentModule?.title}</h2>
+                        <p className="text-gray-600 dark:text-gray-300">{currentModule?.description}</p>
                       </div>
                     </div>
                     

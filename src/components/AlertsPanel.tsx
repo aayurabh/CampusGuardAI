@@ -4,7 +4,7 @@ import { MonitoringModule } from '../App';
 
 interface AlertsPanelProps {
   moduleId: MonitoringModule;
-  realTimeData?: any;
+  realTimeData?: unknown;
 }
 
 const AlertsPanel: React.FC<AlertsPanelProps> = ({ moduleId, realTimeData }) => {
@@ -80,34 +80,34 @@ const AlertsPanel: React.FC<AlertsPanelProps> = ({ moduleId, realTimeData }) => 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-colors">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Active Alerts</h3>
-        <span className="text-sm text-gray-500">{alerts.length} alerts</span>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Active Alerts</h3>
+        <span className="text-sm text-gray-500 dark:text-gray-400">{alerts.length} alerts</span>
       </div>
 
       <div className="space-y-3">
         {alerts.length === 0 ? (
           <div className="text-center py-8">
             <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
-            <p className="text-gray-500">No active alerts</p>
-            <p className="text-sm text-gray-400">System is operating normally</p>
+            <p className="text-gray-500 dark:text-gray-400">No active alerts</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500">System is operating normally</p>
           </div>
         ) : (
           alerts.map((alert) => (
             <div
               key={alert.id}
-              className={`p-3 bg-gray-50 rounded-lg border-l-4 ${getAlertBorder(alert.type)}`}
+              className={`p-3 bg-gray-50 dark:bg-gray-700 rounded-lg border-l-4 ${getAlertBorder(alert.type)} transition-colors`}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-3">
                   {getAlertIcon(alert.type)}
                   <div className="flex-1">
-                    <p className="text-sm text-gray-900">{alert.message}</p>
-                    <p className="text-xs text-gray-500 mt-1">{alert.time}</p>
+                    <p className="text-sm text-gray-900 dark:text-gray-100">{alert.message}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{alert.time}</p>
                   </div>
                 </div>
-                <button className="text-gray-400 hover:text-gray-600">
+                <button className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
                   <X className="w-4 h-4" />
                 </button>
               </div>

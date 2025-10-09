@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Camera, Video, Upload, Play, Pause, RotateCcw } from 'lucide-react';
+import React, { useState } from 'react';
+import { Camera, Video, Upload, Pause } from 'lucide-react';
 import { MonitoringModule } from '../App';
 import RealCameraFeed from './RealCameraFeed';
 
 interface CameraFeedProps {
   moduleId: MonitoringModule;
   isMonitoring: boolean;
-  onAnalysisUpdate?: (analysis: any) => void;
+  onAnalysisUpdate?: (analysis: unknown) => void;
 }
 
 const CameraFeed: React.FC<CameraFeedProps> = ({ moduleId, isMonitoring, onAnalysisUpdate }) => {
@@ -63,14 +63,14 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ moduleId, isMonitoring, onAnaly
   const moduleInfo = getModuleSpecificInfo();
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-colors">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">{moduleInfo.title}</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{moduleInfo.title}</h3>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setUseRealCV(!useRealCV)}
             className={`px-3 py-1 rounded text-xs ${
-              useRealCV ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+              useRealCV ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
             }`}
           >
             {useRealCV ? 'Real CV' : 'Demo'}
@@ -78,7 +78,7 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ moduleId, isMonitoring, onAnaly
           <button
             onClick={() => setInputType('camera')}
             className={`p-2 rounded-lg ${
-              inputType === 'camera' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
+              inputType === 'camera' ? 'bg-blue-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
             }`}
           >
             <Camera className="w-4 h-4" />
@@ -86,12 +86,12 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ moduleId, isMonitoring, onAnaly
           <button
             onClick={() => setInputType('video')}
             className={`p-2 rounded-lg ${
-              inputType === 'video' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
+              inputType === 'video' ? 'bg-blue-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
             }`}
           >
             <Video className="w-4 h-4" />
           </button>
-          <button className="p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">
+          <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
             <Upload className="w-4 h-4" />
           </button>
         </div>
@@ -137,13 +137,13 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ moduleId, isMonitoring, onAnaly
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className={`w-2 h-2 rounded-full ${isMonitoring ? 'bg-yellow-500' : 'bg-gray-400'}`} />
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-gray-300">
             {isMonitoring ? 'Demo Mode' : 'Standby'}
           </span>
         </div>
-        <div className="flex items-center space-x-2 text-sm text-gray-600">
+        <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
           {moduleInfo.indicators.map((indicator, index) => (
-            <span key={index} className="bg-gray-100 px-2 py-1 rounded">
+            <span key={index} className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded transition-colors">
               {indicator}
             </span>
           ))}

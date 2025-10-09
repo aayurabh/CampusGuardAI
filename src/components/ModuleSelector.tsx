@@ -22,8 +22,8 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({
   onModuleChange
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Monitoring Modules</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Monitoring Modules</h3>
       <div className="space-y-2">
         {modules.map((module) => (
           <button
@@ -31,8 +31,8 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({
             onClick={() => onModuleChange(module.id)}
             className={`w-full text-left p-3 rounded-lg transition-colors ${
               activeModule === module.id
-                ? 'bg-blue-50 border-2 border-blue-200'
-                : 'hover:bg-gray-50 border-2 border-transparent'
+                ? 'bg-blue-50 dark:bg-blue-900 border-2 border-blue-200 dark:border-blue-700'
+                : 'hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-transparent'
             }`}
           >
             <div className="flex items-center space-x-3">
@@ -40,8 +40,8 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({
                 <module.icon className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-gray-900">{module.title}</h4>
-                <p className="text-sm text-gray-600">{module.description}</p>
+                <h4 className="font-medium text-gray-900 dark:text-white">{module.title}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{module.description}</p>
               </div>
             </div>
           </button>
