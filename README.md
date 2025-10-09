@@ -1,6 +1,6 @@
 # CampusGuard: AI-Powered Campus Monitoring Toolkit
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen)](https://campusguard-libynkozc-saurabh-singhs-projects-c8cae17b.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen)](https://campusguard-ai.vercel.app/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18.3.1-blue)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue)](https://www.typescriptlang.org/)
@@ -36,7 +36,7 @@ CampusGuard is a comprehensive AI-powered computer vision toolkit designed to en
 
 ## 🚀 Live Demo
 
-**[Try CampusGuard Live](https://campusguard-libynkozc-saurabh-singhs-projects-c8cae17b.vercel.app)**
+**[Try CampusGuard Live](https://campusguard-ai.vercel.app/)**
 
 *Note: Camera permissions required for full functionality*
 
